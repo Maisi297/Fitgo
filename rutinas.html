@@ -3,32 +3,79 @@
 <link rel="stylesheet" href="style.css">
 <head>
   <meta charset="UTF-8">
-  <title></title>
+  <title>Fitgo</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body id="dudas">
-
-  <div class="navbar">
-    <div class="logo-container">
-      <img src="fitgo.jpg" alt="Logo del grupo">
-      <span>GREENUP</span>
-    </div>
-    <div class="nav-links">
-        <a href="index.html">inicio</a>
-      <a href="rutinas.html">Rutinas de ejercicio</a>
-      <a href="Cuenta.html">Tu cuenta</a>
-      <a href="Consultas.html">Consultas</a>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <div class="logo-container"><img src="" alt=""></div>
+    <a class="navbar-brand" href="index.html">Fitgo</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon">Fitgo</span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="rutinas.html">Rutinas de ejercicio</a>
+        </li>
+       <li class="nav-item">
+          <a class="nav-link" href="cuentas.html">Tu cuenta</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Sobrenosotros.html">Sobre nosotros</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="consultas.html">Consulta a profesional</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
     </div>
   </div>
-  <div style="padding: 30px;">
-    <h1>Bienvenido a tu sitio</h1>
-    <h2 id="dud">Dudas Comunes</h2>
-    <h3> </h3>
-    <p></p>
-    <h3></h3>
-    <p></p>
-    <h3></h3>
-    <p> </p>
+</nav>
+<h3 class="text-center">Rutinas de ejercicio</h3>
+<p>Esta es la sección principal de la pagina.En esta seccion habran distintas rutinas para elegir.
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="col">
+    <div class="card">
+      <img src="" class="card-img-top" alt="Plan 1">
+      <div class="card-body">
+        <h5 class="card-title">plan de rutina 1</h5>
+        <p class="card-text">Este es el plan de rutina 1.
+           en este plan trabajaremos piernas, glúteos y abdomen en diferentes ejercicios que serán presentadas en el siguiente video:
+       <a href="https://www.youtube.com/watch?v=ItMcmDCxD6A" class="btn btn-primary">iniciar</a>
+      </div>
+    </div>
   </div>
-
+  <div class="col">
+    <div class="card">
+      <img src="" class="card-img-top" alt="Plan 2">
+      <div class="card-body">
+        <h5 class="card-title">Plan de rutina 2</h5>/
+        <p class="card-text">Este es el plan de rutina 2.
+           En este plan trabajaremos brazos, espalda y abdomen rm diferentes ejercicios que serán presentadas en el siguientes video:
+          <a href="https://www.youtube.com/watch?v=pTxhy506g0g" class="btn btn-primary">iniciar</a>
+      </div>
+    </div>
+  </div>
+     <div class="col">
+    <div class="card">
+      <img src="" class="card-img-top" alt="Plan 3">
+      <div class="card-body">
+        <h5 class="card-title">Plan de rutina 3</h5>/
+        <p class="card-text">Este es el plan de rutina 3.
+           En este plan trabajaremos distintos ejercicios de cardio que serán presentadas en el siguiente video:
+          <a href="https://www.youtube.com/watch?v=cICL84J38as" class="btn btn-primary">iniciar</a>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>

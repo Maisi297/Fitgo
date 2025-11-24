@@ -5,46 +5,353 @@
 <head>
   <meta charset="UTF-8">
   <title>Fitgo</title>
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitGo - Tu Compañero de Fitness Definitivo</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles-simple.css">
 </head>
 <body>
 
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">FitGo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#programas">Rutinas de ejercicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonios">Testimonios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                    <li class="nav-item ms-3">
+                        <button class="btn btn-primary btn-cta" onclick="alert('¡Bienvenido a FitGo!')">Comenzar ahora</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <div class="logo-container"><img src="/imagenes/fitgo.jpeg"alt="Fitgo"></div>
-    <a class="navbar-brand" href="index.html">Fitgo</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon">Fitgo</span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="rutinas.html">Rutinas de ejercicio</a>
-        </li>
-       <li class="nav-item">
-          <a class="nav-link" href="cuentas.html">Tu cuenta</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="Sobrenosotros.html">Sobre nosotros</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="consultas.html">Consulta a profesional</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-<h1 class="text-center">Bienvenidos a Fitgo</h1>
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-1 fw-bold mb-4 hero-title">Tu Compañero de Fitness Definitivo</h1>
+                    <p class="lead mb-4 text-secondary">Guía y soporte personalizados para lograr tus metas. Transforma tu cuerpo y mente con programas diseñados especialmente para ti.</p>
+                    <div class="d-flex gap-3 flex-wrap">
+                        <button class="btn btn-success btn-lg btn-pill">
+                            <i class="bi bi-arrow-right me-2"></i>Ver rutinas
+                        </button>
+                        <button class="btn btn-outline-success btn-lg btn-pill">
+                            <i class="bi bi-play-circle me-2"></i>Crear plan personalizado
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-5 mt-lg-0">
+                    <div class="stats-card">
+                        <div class="stat-item">
+                            <h2 class="stat-label">Muchos</h2>
+                            <p class="stat-label">Usuarios activos</p>
+                        </div>
+                        <div class="stat-item">
+                            <h2 class="stat-label">Varias</h2>
+                            <p class="stat-label">Rutinas disponibles</p>
+                        </div>
+                        <div class="stat-item">
+                            <h2 class="stat-number">95%</h2>
+                            <p class="stat-label">Satisfacción</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Benefits Section -->
+    <section class="benefits-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 fw-bold">¿Por qué elegir FitGo?</h2>
+                <p class="lead text-secondary">Todo lo que necesitas para alcanzar tus objetivos de fitness</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="benefit-card text-center">
+                        <div class="benefit-icon mb-3">
+                            <i class="bi bi-bullseye"></i>
+                        </div>
+                        <h5 class="fw-bold">Planes personalizados</h5>
+                        <p class="text-secondary">Entrenamientos adaptados a tus objetivos y nivel de fitness</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="benefit-card text-center">
+                        <div class="benefit-icon mb-3">
+                            <i class="bi bi-activity"></i>
+                        </div>
+                        <h5 class="fw-bold">Rutinas para todos los niveles</h5>
+                        <p class="text-secondary">Desde principiantes hasta atletas avanzados</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="benefit-card text-center">
+                        <div class="benefit-icon mb-3">
+                            <i class="bi bi-graph-up-arrow"></i>
+                        </div>
+                        <h5 class="fw-bold">Progreso y métricas</h5>
+                        <p class="text-secondary">Sigue tu evolución con estadísticas detalladas</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="benefit-card text-center">
+                        <div class="benefit-icon mb-3">
+                            <i class="bi bi-people"></i>
+                        </div>
+                        <h5 class="fw-bold">Consejos de profesionales</h5>
+                        <p class="text-secondary">Acceso directo a entrenadores certificados</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Programs Section -->
+    <section id="programas" class="programs-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 fw-bold">Nuestros Programas</h2>
+                <p class="lead text-secondary">Elige el programa perfecto para tus objetivos</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="program-card">
+                        <h4 class="fw-bold mb-3">Perder peso</h4>
+                        <p class="text-secondary mb-3">Programas efectivos de cardio y nutrición para alcanzar tu peso ideal</p>
+                        <div class="program-meta mb-3">
+                            <span class="badge bg-light text-dark"><i class="bi bi-clock me-1"></i>8-12 semanas</span>
+                            <span class="badge bg-light text-dark ms-2"><i class="bi bi-bar-chart me-1"></i>Todos los niveles</span>
+                        </div>
+                        <button class="btn btn-success w-100 btn-pill">Ver más <i class="bi bi-arrow-right"></i></button>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="program-card">
+                        <h4 class="fw-bold mb-3">Ganar músculo</h4>
+                        <p class="text-secondary mb-3">Rutinas de fuerza y hipertrofia para desarrollar masa muscular</p>
+                        <div class="program-meta mb-3">
+                            <span class="badge bg-light text-dark"><i class="bi bi-clock me-1"></i>12-16 semanas</span>
+                            <span class="badge bg-light text-dark ms-2"><i class="bi bi-bar-chart me-1"></i>Intermedio-Avanzado</span>
+                        </div>
+                        <button class="btn btn-success w-100 btn-pill">Ver más <i class="bi bi-arrow-right"></i></button>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="program-card">
+                        <h4 class="fw-bold mb-3">Vida saludable</h4>
+                        <p class="text-secondary mb-3">Equilibrio perfecto entre ejercicio, nutrición y bienestar mental</p>
+                        <div class="program-meta mb-3">
+                            <span class="badge bg-light text-dark"><i class="bi bi-clock me-1"></i>Continuo</span>
+                            <span class="badge bg-light text-dark ms-2"><i class="bi bi-bar-chart me-1"></i>Todos los niveles</span>
+                        </div>
+                        <button class="btn btn-success w-100 btn-pill">Ver más <i class="bi bi-arrow-right"></i></button>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="program-card">
+                        <h4 class="fw-bold mb-3">Entrenamiento en casa</h4>
+                        <p class="text-secondary mb-3">Ejercicios efectivos sin equipamiento especial, desde tu hogar</p>
+                        <div class="program-meta mb-3">
+                            <span class="badge bg-light text-dark"><i class="bi bi-clock me-1"></i>Flexible</span>
+                            <span class="badge bg-light text-dark ms-2"><i class="bi bi-bar-chart me-1"></i>Principiante-Intermedio</span>
+                        </div>
+                        <button class="btn btn-success w-100 btn-pill">Ver más <i class="bi bi-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Testimonials Section -->
+    <section id="testimonios" class="testimonials-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 fw-bold">Historias de Éxito</h2>
+                <p class="lead text-secondary">Miles de personas han transformado sus vidas con FitGo</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <div class="stars mb-3">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="text-secondary mb-4">"FitGo cambió mi vida completamente. Los planes personalizados y el apoyo constante me ayudaron a alcanzar mis metas."</p>
+                        <div class="d-flex align-items-center">
+                            <div class="avatar me-3">MG</div>
+                            <div>
+                                <h6 class="mb-0 fw-bold">María González</h6>
+                                <small class="text-secondary">Perdió 15kg en 4 meses</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <div class="stars mb-3">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="text-secondary mb-4">"Las rutinas son increíbles y los consejos profesionales marcaron la diferencia. Nunca me sentí tan fuerte."</p>
+                        <div class="d-flex align-items-center">
+                            <div class="avatar me-3">CR</div>
+                            <div>
+                                <h6 class="mb-0 fw-bold">Carlos Ruiz</h6>
+                                <small class="text-secondary">Ganó 8kg de músculo</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <div class="stars mb-3">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="text-secondary mb-4">"No solo mejoré físicamente, también mentalmente. FitGo es más que ejercicio, es un estilo de vida."</p>
+                        <div class="d-flex align-items-center">
+                            <div class="avatar me-3">AM</div>
+                            <div>
+                                <h6 class="mb-0 fw-bold">Ana Martínez</h6>
+                                <small class="text-secondary">Mejoró su salud integral</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section py-5">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="display-3 fw-bold mb-4">Empieza hoy tu transformación</h2>
+                <p class="lead text-secondary mb-4">Únete a miles de personas que ya están alcanzando sus metas</p>
+                <div class="d-flex justify-content-center gap-4 mb-4 flex-wrap">
+                    <div class="cta-feature">
+                        <i class="bi bi-check-circle-fill me-2"></i>Sin compromiso a largo plazo
+                    </div>
+                    <div class="cta-feature">
+                        <i class="bi bi-check-circle-fill me-2"></i>Prueba gratis por 14 días
+                    </div>
+                    <div class="cta-feature">
+                        <i class="bi bi-check-circle-fill me-2"></i>Cancela cuando quieras
+                    </div>
+                </div>
+                <button class="btn btn-success btn-lg btn-pill px-5" onclick="alert('¡Bienvenido a FitGo! Comienza tu transformación ahora.')">Unirme a FitGo <i class="bi bi-arrow-right ms-2"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto" class="footer py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3">
+                    <h5 class="fw-bold mb-3">FitGo</h5>
+                    <p class="text-white-50">Tu compañero definitivo para alcanzar tus metas de fitness y bienestar.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="fw-bold mb-3">Enlaces rápidos</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#inicio" class="footer-link">Inicio</a></li>
+                        <li><a href="#programas" class="footer-link">Rutinas de ejercicio</a></li>
+                        <li><a href="#testimonios" class="footer-link">Testimonios</a></li>
+                        <li><a href="#contacto" class="footer-link">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="fw-bold mb-3">Recursos</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="footer-link">Blog</a></li>
+                        <li><a href="#" class="footer-link">Guías de entrenamiento</a></li>
+                        <li><a href="#" class="footer-link">Nutrición</a></li>
+                        <li><a href="#" class="footer-link">Preguntas frecuentes</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="fw-bold mb-3">Contacto</h6>
+                    <ul class="list-unstyled text-white-50">
+                        <li class="mb-2"><i class="bi bi-envelope me-2"></i>info@fitgo.com</li>
+                        <li class="mb-2"><i class="bi bi-telephone me-2"></i>+34 900 123 456</li>
+                        <li><i class="bi bi-geo-alt me-2"></i>Madrid, España</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="border-secondary my-4">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="text-white-50 mb-0">&copy; 2024 FitGo. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#" class="footer-link me-3">Política de privacidad</a>
+                    <a href="#" class="footer-link me-3">Términos de servicio</a>
+                    <a href="#" class="footer-link">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Smooth Scroll -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>

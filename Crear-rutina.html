@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear tu Rutina Ideal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+</head>
+<body class="bg-dark text-white"> 
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="rutinas.html">💪 Rutinas Pro</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-sm btn-outline-light" href="rutinas-creadas.html">Mis Rutinas Creadas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-sm btn-outline-primary ms-2" href="rutinas.html">Volver</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container my-5">
+        <h1 class="text-center mb-4 text-primary">🛠️ Diseña tu Rutina Personalizada</h1>
+        <p class="text-center lead mb-5 text-white-50">Selecciona ejercicios, ajusta series y duración, y guarda tu plan de entrenamiento.</p>
+        
+        <div class="row">
+            <div class="col-md-5">
+                <div class="card card-dark p-3 mb-4 h-100">
+                    <h5 class="card-title text-primary mb-3">Banco de Ejercicios</h5>
+                    <ul id="ejercicio-lista" class="list-group list-group-flush bg-dark custom-scroll">
+                        <li class="list-group-item bg-dark text-white d-flex justify-content-between align-items-center">Sentadilla<button class="btn btn-sm btn-success" onclick="agregarEjercicio('Sentadilla')">+</button></li>
+                        <li class="list-group-item bg-dark text-white d-flex justify-content-between align-items-center">Press Banca<button class="btn btn-sm btn-success" onclick="agregarEjercicio('Press Banca')">+</button></li>
+                        <li class="list-group-item bg-dark text-white d-flex justify-content-between align-items-center">Peso Muerto<button class="btn btn-sm btn-success" onclick="agregarEjercicio('Peso Muerto')">+</button></li>
+                        <li class="list-group-item bg-dark text-white d-flex justify-content-between align-items-center">Burpees<button class="btn btn-sm btn-success" onclick="agregarEjercicio('Burpees')">+</button></li>
+                        <li class="list-group-item bg-dark text-white d-flex justify-content-between align-items-center">Plancha (Plank)<button class="btn btn-sm btn-success" onclick="agregarEjercicio('Plancha (Plank)')">+</button></li>
+                        
+                        <li class="list-group-item bg-dark text-white d-flex justify-content-between align-items-center">Dominadas / Jalones<button class="btn btn-sm btn-success" onclick="agregarEjercicio('Dominadas / Jalones')">+</button></li>
+                        <li class="list-group-item bg-dark text-white d-flex justify-content-between align-items-center">Press Militar<button class="btn btn-sm btn-success" onclick="agregarEjercicio('Press Militar')">+</button></li>
+                        <li class="list-group-item bg-dark text-white d-flex justify-content-between align-items-center">Remo con Barra<button class="btn btn-sm btn-success" onclick="agregarEjercicio('Remo con Barra')">+</button></li>
+                        <li class="list-group-item bg-dark text-white d-flex justify-content-between align-items-center">Zancadas (Lunge)<button class="btn btn-sm btn-success" onclick="agregarEjercicio('Zancadas (Lunge)')">+</button></li>
+                        <li class="list-group-item bg-dark text-white d-flex justify-content-between align-items-center">Curl de Bíceps<button class="btn btn-sm btn-success" onclick="agregarEjercicio('Curl de Bíceps')">+</button></li>
+                        <li class="list-group-item bg-dark text-white d-flex justify-content-between align-items-center">Extensión de Tríceps<button class="btn btn-sm btn-success" onclick="agregarEjercicio('Extensión de Tríceps')">+</button></li>
+                        <li class="list-group-item bg-dark text-white d-flex justify-content-between align-items-center">Elevación de Gemelos<button class="btn btn-sm btn-success" onclick="agregarEjercicio('Elevación de Gemelos')">+</button></li>
+                        <li class="list-group-item bg-dark text-white d-flex justify-content-between align-items-center">Abdominales<button class="btn btn-sm btn-success" onclick="agregarEjercicio('Abdominales')">+</button></li>
+                        <li class="list-group-item bg-dark text-white d-flex justify-content-between align-items-center">Box Jump (Saltos)<button class="btn btn-sm btn-success" onclick="agregarEjercicio('Box Jump (Saltos)')">+</button></li>
+                        <li class="list-group-item bg-dark text-white d-flex justify-content-between align-items-center">Trote/Carrera (Cardio)<button class="btn btn-sm btn-success" onclick="agregarEjercicio('Trote/Carrera (Cardio)')">+</button></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-7">
+                <div class="card card-dark p-3 h-100">
+                    <h5 class="card-title text-primary mb-3">Mi Rutina Actual</h5>
+                    
+                    <input type="text" id="nombre-rutina" class="form-control bg-dark text-white border-primary mb-3" placeholder="Nombre de mi rutina (Ej. 'Full Body Lunes')" required>
+                    
+                    <div id="rutina-actual" class="list-group mb-4">
+                        <p class="text-white-50 text-center p-3" id="mensaje-vacio">Aún no has agregado ejercicios. Usa el botón '+' de la izquierda.</p>
+                    </div>
+
+                    <div class="mt-auto pt-3 border-top border-secondary">
+                        <button class="btn btn-primary w-100" onclick="guardarRutina()">💾 Guardar Rutina</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Array para almacenar temporalmente los ejercicios de la rutina que se está creando
+        let rutinaEnEdicion = [];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            actualizarListaRutina();
+        });
+
+        function actualizarListaRutina() {
+            const contenedor = document.getElementById('rutina-actual');
+            contenedor.innerHTML = ''; 
+            
+            if (rutinaEnEdicion.length === 0) {
+                document.getElementById('mensaje-vacio').style.display = 'block';
+                return;
+            }
+            document.getElementById('mensaje-vacio').style.display = 'none';
+
+            rutinaEnEdicion.forEach((ejercicio, index) => {
+                const itemHTML = `
+                    <div class="list-group-item card-dark mb-2 border-primary">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h6 class="mb-0 text-primary">${ejercicio.nombre}</h6>
+                            <button class="btn btn-sm btn-danger" onclick="eliminarEjercicio(${index})">X</button>
+                        </div>
+                        <div class="row g-2 align-items-center small">
+                            <div class="col-4">
+                                <label class="form-label text-white-50 mb-0">Sets</label>
+                                <input type="number" class="form-control form-control-sm bg-dark text-white" 
+                                       value="${ejercicio.sets}" min="1" onchange="actualizarPropiedad(${index}, 'sets', this.value)">
+                            </div>
+                            <div class="col-4">
+                                <label class="form-label text-white-50 mb-0">Reps/Duración</label>
+                                <input type="text" class="form-control form-control-sm bg-dark text-white" 
+                                       value="${ejercicio.duracion}" onchange="actualizarPropiedad(${index}, 'duracion', this.value)">
+                            </div>
+                             <div class="col-4">
+                                <label class="form-label text-white-50 mb-0">Peso/Nota</label>
+                                <input type="text" class="form-control form-control-sm bg-dark text-white" 
+                                       value="${ejercicio.nota}" onchange="actualizarPropiedad(${index}, 'nota', this.value)">
+                            </div>
+                        </div>
+                    </div>
+                `;
+                contenedor.innerHTML += itemHTML;
+            });
+        }
+
+        function agregarEjercicio(nombre) {
+            const nuevoEjercicio = {
+                nombre: nombre,
+                sets: 3, 
+                duracion: (nombre.includes('Plancha') || nombre.includes('Trote')) ? '30 seg' : '10 reps', // Ajuste para tiempo/repeticiones
+                nota: (nombre.includes('Plancha') || nombre.includes('Trote') || nombre.includes('Burpees') || nombre.includes('Box Jump')) ? 'Peso Corporal' : 'Ajustar Peso'
+            };
+            rutinaEnEdicion.push(nuevoEjercicio);
+            actualizarListaRutina();
+        }
+
+        function eliminarEjercicio(index) {
+            rutinaEnEdicion.splice(index, 1);
+            actualizarListaRutina();
+        }
+        
+        function actualizarPropiedad(index, propiedad, valor) {
+            rutinaEnEdicion[index][propiedad] = valor;
+            console.log(`Actualizado: ${propiedad} de ${rutinaEnEdicion[index].nombre} a ${valor}`);
+        }
+
+        function guardarRutina() {
+            const nombreRutina = document.getElementById('nombre-rutina').value.trim();
+            if (nombreRutina === '') {
+                alert('Por favor, ingresa un nombre para la rutina.');
+                return;
+            }
+            if (rutinaEnEdicion.length === 0) {
+                alert('No puedes guardar una rutina vacía.');
+                return;
+            }
+
+            // 1. Obtener rutinas existentes del localStorage
+            let rutinasGuardadas = JSON.parse(localStorage.getItem('rutinas_usuario')) || [];
+
+            // 2. Crear el objeto de la nueva rutina
+            const nuevaRutina = {
+                id: Date.now(),
+                nombre: nombreRutina,
+                fechaCreacion: new Date().toLocaleDateString(),
+                ejercicios: rutinaEnEdicion
+            };
+
+            // 3. Agregar la nueva rutina
+            rutinasGuardadas.push(nuevaRutina);
+
+            // 4. Guardar de nuevo en localStorage
+            localStorage.setItem('rutinas_usuario', JSON.stringify(rutinasGuardadas));
+
+            // 5. Limpiar y notificar al usuario (Se mantiene el alert para confirmación)
+            alert(`¡Rutina "${nombreRutina}" guardada con éxito! Redirigiendo...`);
+            
+            // 6. Redirigir a la vista de rutinas guardadas (solicitado)
+            window.location.href = 'rutinas-creadas.html';
+        }
+    </script>
+</body>
+</html>

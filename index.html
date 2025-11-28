@@ -1,38 +1,36 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
-<html lang="es">
-<link rel="stylesheet" href="style.css">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Fitgo</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitGo - Tu Compañero de Fitness Definitivo</title>
-    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles-simple.css">
+    <meta charset="UTF-8">
+  <title>Fitgo - Tu Compañero de Fitness Definitivo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles-simple.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#">FitGo</a>
+            <a class="navbar-brand fw-bold" href="fitgo-index.html">FitGo</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Inicio</a>
+                        <a class="nav-link" href="fitgo-index.html">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="rutinas.html">Rutinas de ejercicio</a>
@@ -41,13 +39,13 @@
                         <a class="nav-link" href="cuentas.html">Tu cuenta</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Sobrenosotros.html">Sobrenosotros</a>
+                        <a class="nav-link" href="Sobrenosotros.html">Sobre nosotros</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="consultas.html">Consulta a profesional</a>
                     </li>
                     <li class="nav-item ms-3">
-                        <button class="btn btn-primary btn-cta" onclick="alert('¡Bienvenido a FitGo!')">Comenzar ahora</button>
+                        <button class="btn btn-primary btn-cta" onclick="window.location.href='cuentas.html'">Comenzar ahora</button>
                     </li>
                 </ul>
             </div>
@@ -62,10 +60,10 @@
                     <h1 class="display-1 fw-bold mb-4 hero-title">Tu Compañero de Fitness Definitivo</h1>
                     <p class="lead mb-4 text-secondary">Guía y soporte personalizados para lograr tus metas. Transforma tu cuerpo y mente con programas diseñados especialmente para ti.</p>
                     <div class="d-flex gap-3 flex-wrap">
-                        <button class="btn btn-success btn-lg btn-pill">
+                        <button class="btn btn-success btn-lg btn-pill" onclick="window.location.href='rutinas.html'" data-testid="ver-rutinas-btn">
                             <i class="bi bi-arrow-right me-2"></i>Ver rutinas
                         </button>
-                        <button class="btn btn-outline-success btn-lg btn-pill">
+                        <button class="btn btn-outline-success btn-lg btn-pill" onclick="window.location.href='rutinas.html'" data-testid="crear-plan-btn">
                             <i class="bi bi-play-circle me-2"></i>Crear plan personalizado
                         </button>
                     </div>
@@ -154,7 +152,7 @@
                             <span class="badge bg-light text-dark"><i class="bi bi-clock me-1"></i>8-12 semanas</span>
                             <span class="badge bg-light text-dark ms-2"><i class="bi bi-bar-chart me-1"></i>Todos los niveles</span>
                         </div>
-                        <button class="btn btn-success w-100 btn-pill">Ver más <i class="bi bi-arrow-right"></i></button>
+                        <button class="btn btn-success w-100 btn-pill" onclick="window.location.href='rutinas.html'" data-testid="programa-perder-peso-btn">Ver más <i class="bi bi-arrow-right"></i></button>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
@@ -165,7 +163,7 @@
                             <span class="badge bg-light text-dark"><i class="bi bi-clock me-1"></i>12-16 semanas</span>
                             <span class="badge bg-light text-dark ms-2"><i class="bi bi-bar-chart me-1"></i>Intermedio-Avanzado</span>
                         </div>
-                        <button class="btn btn-success w-100 btn-pill">Ver más <i class="bi bi-arrow-right"></i></button>
+                        <button class="btn btn-success w-100 btn-pill" onclick="window.location.href='rutinas.html'" data-testid="programa-ganar-musculo-btn">Ver más <i class="bi bi-arrow-right"></i></button>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
@@ -176,7 +174,7 @@
                             <span class="badge bg-light text-dark"><i class="bi bi-clock me-1"></i>Continuo</span>
                             <span class="badge bg-light text-dark ms-2"><i class="bi bi-bar-chart me-1"></i>Todos los niveles</span>
                         </div>
-                        <button class="btn btn-success w-100 btn-pill">Ver más <i class="bi bi-arrow-right"></i></button>
+                        <button class="btn btn-success w-100 btn-pill" onclick="window.location.href='rutinas.html'" data-testid="programa-vida-saludable-btn">Ver más <i class="bi bi-arrow-right"></i></button>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
@@ -187,7 +185,7 @@
                             <span class="badge bg-light text-dark"><i class="bi bi-clock me-1"></i>Flexible</span>
                             <span class="badge bg-light text-dark ms-2"><i class="bi bi-bar-chart me-1"></i>Principiante-Intermedio</span>
                         </div>
-                        <button class="btn btn-success w-100 btn-pill">Ver más <i class="bi bi-arrow-right"></i></button>
+                        <button class="btn btn-success w-100 btn-pill" onclick="window.location.href='rutinas.html'" data-testid="programa-casa-btn">Ver más <i class="bi bi-arrow-right"></i></button>
                     </div>
                 </div>
             </div>
@@ -281,7 +279,7 @@
                         <i class="bi bi-check-circle-fill me-2"></i>Cancela cuando quieras
                     </div>
                 </div>
-                <button class="btn btn-success btn-lg btn-pill px-5" onclick="alert('¡Bienvenido a FitGo! Comienza tu transformación ahora.')">Unirme a FitGo <i class="bi bi-arrow-right ms-2"></i></button>
+                <button class="btn btn-success btn-lg btn-pill px-5" onclick="window.location.href='cuentas.html'" data-testid="unirme-fitgo-btn">Unirme a FitGo <i class="bi bi-arrow-right ms-2"></i></button>
             </div>
         </div>
     </section>
@@ -304,7 +302,7 @@
                     <h6 class="fw-bold mb-3">Enlaces rápidos</h6>
                     <ul class="list-unstyled">
                         <li><a href="#inicio" class="footer-link">Inicio</a></li>
-                        <li><a href="#programas" class="footer-link">Rutinas de ejercicio</a></li>
+                        <li><a href="rutinas.html" class="footer-link">Rutinas de ejercicio</a></li>
                         <li><a href="#testimonios" class="footer-link">Testimonios</a></li>
                         <li><a href="#contacto" class="footer-link">Contacto</a></li>
                     </ul>

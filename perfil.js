@@ -62,11 +62,20 @@ function cargarPerfil() {
     const cerrarSesionBtn = document.getElementById('cerrarSesionBtn');
     if (cerrarSesionBtn) {
         cerrarSesionBtn.addEventListener('click', () => {
-            // ⭐ 1. Elimina los datos del usuario del localStorage al cerrar sesión
+            // 1. Elimina los datos del usuario del localStorage al cerrar sesión
             localStorage.removeItem('fitgo_perfil_usuario'); 
             alert('Cerrando sesión. Redirigiendo a inicio.');
             // 2. Redirige a la página principal
             window.location.href = 'index.html'; 
+        });
+    }
+
+    //  NUEVA FUNCIONALIDAD: Editar Información
+    const editarInfoBtn = document.getElementById('editarInfoBtn');
+    if (editarInfoBtn) {
+        editarInfoBtn.addEventListener('click', () => {
+            // Redirigir a la página de cuentas/login para que se precarguen y se puedan editar.
+            window.location.href = 'cuentas.html';
         });
     }
 }

@@ -23,7 +23,7 @@ function guardarDatos(event) {
         localStorage.setItem('fitgo_perfil_usuario', JSON.stringify(datosUsuario));
         
         // Redirigir a la página de perfil después de guardar
-        alert(`¡Bienvenido, ${usuario}! Tus datos han sido guardados.`);
+        alert(`¡Datos de ${usuario} actualizados!`); // Mensaje actualizado
         window.location.href = 'perfil.html'; 
         
     } catch (e) {
@@ -48,7 +48,6 @@ function cargarDatosGuardados() {
             console.error('Error al parsear datos guardados:', e);
         }
     }
-    // Si datosGuardados es null (porque se cerró sesión), los campos se quedan vacíos.
 }
 
 
@@ -60,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
         loginForm.addEventListener('submit', guardarDatos);
     }
     
-    // Carga los datos guardados al cargar la página de cuentas (opcional, si quieres que se muestren datos previos)
-    // Si quieres que la página de inicio de sesión SIEMPRE esté vacía, comenta o elimina esta línea:
-    // cargarDatosGuardados();
+    //  Aseguro que se carguen los datos para la edición.
+    cargarDatosGuardados(); 
 });

@@ -6,10 +6,10 @@ function guardarDatos(event) {
     // Obtener los valores de los campos del formulario
     const usuario = document.querySelector('[name="username"]').value;
     const peso = document.getElementById('peso').value;
-    const altura = document.getElementById('altura').value; // Usar el ID correcto
+    const altura = document.getElementById('altura').value; 
     const edad = document.querySelector('[name="edad"]').value;
     
-    // Crear un objeto con los datos a guardar. Usamos claves descriptivas.
+    // Crear un objeto con los datos a guardar. **Estos datos SOBREESCRIBEN los anteriores.**
     const datosUsuario = {
         username: usuario,
         peso_kg: peso,
@@ -22,7 +22,7 @@ function guardarDatos(event) {
     try {
         localStorage.setItem('fitgo_perfil_usuario', JSON.stringify(datosUsuario));
         
-        // ** REDIRECCIÓN A LA PÁGINA DE PERFIL DESPUÉS DE GUARDAR **
+        // Redirigir a la página de perfil después de guardar
         alert(`¡Bienvenido, ${usuario}! Tus datos han sido guardados.`);
         window.location.href = 'perfil.html'; 
         
@@ -32,7 +32,7 @@ function guardarDatos(event) {
     }
 }
 
-// Función para cargar los datos guardados (opcional, para precargar si ya existían)
+// Función para limpiar o cargar datos (solo si existen)
 function cargarDatosGuardados() {
     const datosGuardados = localStorage.getItem('fitgo_perfil_usuario');
     if (datosGuardados) {
@@ -48,7 +48,9 @@ function cargarDatosGuardados() {
             console.error('Error al parsear datos guardados:', e);
         }
     }
+    // Si datosGuardados es null (porque se cerró sesión), los campos se quedan vacíos.
 }
+
 
 // Escucha el evento 'submit' del formulario una vez que el documento esté cargado
 document.addEventListener('DOMContentLoaded', () => {
@@ -58,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         loginForm.addEventListener('submit', guardarDatos);
     }
     
-    // Carga los datos guardados al cargar la página de cuentas (útil para que el usuario no rellene de nuevo)
-    cargarDatosGuardados();
+    // Carga los datos guardados al cargar la página de cuentas (opcional, si quieres que se muestren datos previos)
+    // Si quieres que la página de inicio de sesión SIEMPRE esté vacía, comenta o elimina esta línea:
+    // cargarDatosGuardados();
 });

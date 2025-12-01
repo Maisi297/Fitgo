@@ -5,12 +5,11 @@ function guardarDatos(event) {
     
     // Obtener los valores de los campos del formulario
     const usuario = document.querySelector('[name="username"]').value;
-    // ... (otras variables) ...
     const peso = document.getElementById('peso').value;
-    const altura = document.querySelector('[name="altura"]').value;
+    const altura = document.getElementById('altura').value; // Usar el ID correcto
     const edad = document.querySelector('[name="edad"]').value;
     
-    // Crear un objeto con los datos a guardar
+    // Crear un objeto con los datos a guardar. Usamos claves descriptivas.
     const datosUsuario = {
         username: usuario,
         peso_kg: peso,
@@ -23,7 +22,8 @@ function guardarDatos(event) {
     try {
         localStorage.setItem('fitgo_perfil_usuario', JSON.stringify(datosUsuario));
         
-        // ** CAMBIO CLAVE: Redirigir a la nueva página de perfil **
+        // ** REDIRECCIÓN A LA PÁGINA DE PERFIL DESPUÉS DE GUARDAR **
+        alert(`¡Bienvenido, ${usuario}! Tus datos han sido guardados.`);
         window.location.href = 'perfil.html'; 
         
     } catch (e) {
@@ -32,17 +32,21 @@ function guardarDatos(event) {
     }
 }
 
-// Función para cargar los datos guardados (mantener para precargar en cuentas.html)
+// Función para cargar los datos guardados (opcional, para precargar si ya existían)
 function cargarDatosGuardados() {
     const datosGuardados = localStorage.getItem('fitgo_perfil_usuario');
     if (datosGuardados) {
-        const datosUsuario = JSON.parse(datosGuardados);
-        
-        // Rellenar campos del formulario
-        document.querySelector('[name="username"]').value = datosUsuario.username || '';
-        document.getElementById('peso').value = datosUsuario.peso_kg || '';
-        document.querySelector('[name="altura"]').value = datosUsuario.altura_cm || '';
-        document.querySelector('[name="edad"]').value = datosUsuario.edad || '';
+        try {
+            const datosUsuario = JSON.parse(datosGuardados);
+            
+            // Rellenar campos del formulario si existen datos previos
+            document.querySelector('[name="username"]').value = datosUsuario.username || '';
+            document.getElementById('peso').value = datosUsuario.peso_kg || '';
+            document.getElementById('altura').value = datosUsuario.altura_cm || '';
+            document.querySelector('[name="edad"]').value = datosUsuario.edad || '';
+        } catch (e) {
+            console.error('Error al parsear datos guardados:', e);
+        }
     }
 }
 
@@ -50,9 +54,10 @@ function cargarDatosGuardados() {
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('loginForm');
     if (loginForm) {
+        // Asocia la función guardarDatos al evento submit
         loginForm.addEventListener('submit', guardarDatos);
     }
     
-    // Carga los datos guardados al cargar la página de cuentas.html
+    // Carga los datos guardados al cargar la página de cuentas (útil para que el usuario no rellene de nuevo)
     cargarDatosGuardados();
 });

@@ -42,28 +42,28 @@
 
 <div class="login-box">
   <h1>Iniciar Sesión</h1>
-    <form id="loginForm" method="POST"> 
-      <div class="username">
+    <form id="loginForm" method="POST"> <div class="username">
         <input type="text" name="username" placeholder="Usuario" required>
       </div>
       <div class="Contraseña">
         <input type="password" name="contraseña" placeholder="Contraseña" required>
       </div>
       <div class="Peso">
-        <input type="number" name="peso" id="peso" placeholder="Peso (kg)" required> 
+        <input type="number" name="peso" id="peso" placeholder="Peso (kg)" required>
       </div>
       <div class="Altura">
-        <input type="number" name="altura" placeholder="Altura (cm)" required>
+        <input type="number" name="altura" id="altura" placeholder="Altura (cm)" required>
       </div>
       <div class="Edad">
         <input type="number" name="edad" placeholder="Edad" required>
       </div>
-      <button type="submit">iniciar</button>
+      <button type="submit" class="btn btn-primary">Iniciar Sesión / Guardar Datos</button>
     </form>
+    <p class="text-center mt-3">Rellena todos los campos para guardar tu perfil.</p>
 </div>
 
-<script src="main.js" defer></script> 
 
-
+<script src="cuenta.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>

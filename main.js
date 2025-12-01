@@ -1,13 +1,11 @@
-// main.js
-
 // Función que maneja el envío del formulario y guarda los datos
 function guardarDatos(event) {
-    // Evita el envío tradicional del formulario para que JavaScript pueda manejarlo
+    // Evita el envío tradicional del formulario
     event.preventDefault(); 
     
     // Obtener los valores de los campos del formulario
-    // Usamos querySelector por el atributo name, y getElementById para el id="peso"
     const usuario = document.querySelector('[name="username"]').value;
+    // ... (otras variables) ...
     const peso = document.getElementById('peso').value;
     const altura = document.querySelector('[name="altura"]').value;
     const edad = document.querySelector('[name="edad"]').value;
@@ -21,13 +19,12 @@ function guardarDatos(event) {
         fechaGuardado: new Date().toLocaleString() 
     };
     
-    // Guardar el objeto en el localStorage (se convierte a JSON String)
+    // Guardar el objeto en el localStorage
     try {
         localStorage.setItem('fitgo_perfil_usuario', JSON.stringify(datosUsuario));
-        alert('Datos de perfil (Usuario, Peso, Altura, Edad) guardados exitosamente en el navegador.');
         
-        // Opcional: Si necesitas hacer el envío POST al servidor después de guardar:
-        // event.target.submit(); 
+        // ** CAMBIO CLAVE: Redirigir a la nueva página de perfil **
+        window.location.href = 'perfil.html'; 
         
     } catch (e) {
         console.error('Error al guardar en localStorage:', e);
@@ -35,11 +32,10 @@ function guardarDatos(event) {
     }
 }
 
-// Función para cargar los datos guardados al abrir la página y rellenar el formulario
+// Función para cargar los datos guardados (mantener para precargar en cuentas.html)
 function cargarDatosGuardados() {
     const datosGuardados = localStorage.getItem('fitgo_perfil_usuario');
     if (datosGuardados) {
-        // Convertir la cadena JSON de vuelta a un objeto JavaScript
         const datosUsuario = JSON.parse(datosGuardados);
         
         // Rellenar campos del formulario
@@ -57,6 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
         loginForm.addEventListener('submit', guardarDatos);
     }
     
-    // Carga los datos guardados al cargar la página
+    // Carga los datos guardados al cargar la página de cuentas.html
     cargarDatosGuardados();
 });

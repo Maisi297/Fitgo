@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<link rel="stylesheet" href="style.css">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi Perfil - Fitgo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <div class="logo-container"><img src="/imagenes/fitgo.jpeg" alt="Fitgo"></div>
+        <a class="navbar-brand" href="index.html">Fitgo</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon">Fitgo</span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="rutinas.html">Rutinas de ejercicio</a>
+            </li>
+           <li class="nav-item">
+              <a class="nav-link" href="cuentas.html">Tu cuenta</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Sobrenosotros.html">Sobre nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="consultas.html">Consulta IA</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+</nav>
+
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 style="color: #4CAF50;">Mi Fitgo</h1> 
+        <button id="cerrarSesionBtn" class="btn btn-outline-danger" style="border: none;">Cerrar Sesión</button>
+    </div>
+
+    <div class="text-center mb-5">
+        <div class="p-5 mx-auto bg-light rounded-circle d-flex justify-content-center align-items-center" style="width: 150px; height: 150px; border: 1px solid #ddd;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16" style="color: #6C757D;">
+                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.284 10 8 10c-2.285 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664z"/>
+            </svg>
+        </div>
+        
+        <button class="btn btn-light mt-3" disabled>Cambiar foto</button> 
+    </div>
+    
+    <div class="p-4 bg-light shadow-sm" style="background-color: #E0E0E0 !important;">
+        <h3 id="perfilNombre">Nombre: Cargando...</h3>
+        <p id="perfilEdad" class="lead">Edad: Cargando...</p>
+        <p id="perfilPeso" class="lead">Peso: Cargando...</p>
+        <p id="perfilAltura" class="lead">Altura: Cargando...</p>
+        <p id="perfilIMC" class="lead" style="font-weight: bold;">IMC: Calculando...</p>
+    </div>
+
+    <div class="text-center mt-4">
+        <button class="btn btn-light" disabled>Editar información</button>
+    </div>
+</div>
+
+<script>
+    // Script local para cargar los datos del perfil y calcular el IMC
+    document.addEventListener('DOMContentLoaded', () => {
+        const datosGuardados = localStorage.getItem('fitgo_perfil_usuario');
+        
+        if (datosGuardados) {
+            const datosUsuario = JSON.parse(datosGuardados);
+            
+            // Mostrar los datos
+            document.getElementById('perfilNombre').textContent = 'Nombre: ' + (datosUsuario.username || 'N/A');
+            document.getElementById('perfilEdad').textContent = 'Edad: ' + (datosUsuario.edad ? datosUsuario.edad + ' años' : 'N/A');
+            document.getElementById('perfilPeso').textContent = 'Peso: ' + (datosUsuario.peso_kg ? datosUsuario.peso_kg + ' kg' : 'N/A');
+            document.getElementById('perfilAltura').textContent = 'Altura: ' + (datosUsuario.altura_cm ? datosUsuario.altura_cm + ' cm' : 'N/A');
+
+            // Calcular y mostrar IMC
+            const peso = parseFloat(datosUsuario.peso_kg);
+            const altura_m = parseFloat(datosUsuario.altura_cm) / 100; // Convertir cm a metros
+            
+            if (!isNaN(peso) && !isNaN(altura_m) && altura_m > 0) {
+                // Fórmula del IMC: peso / (altura * altura)
+                const imc = peso / (altura_m * altura_m);
+                document.getElementById('perfilIMC').textContent = 'IMC: ' + imc.toFixed(2);
+            } else {
+                document.getElementById('perfilIMC').textContent = 'IMC: Datos incompletos';
+            }
+
+        } else {
+            // Si no hay datos, mostrar un mensaje o redirigir al formulario de inicio
+            document.getElementById('perfilNombre').textContent = 'Nombre: No hay datos de sesión';
+            document.getElementById('perfilEdad').textContent = '';
+            document.getElementById('perfilPeso').textContent = '';
+            document.getElementById('perfilAltura').textContent = '';
+            document.getElementById('perfilIMC').textContent = '';
+
+            // Opcional: Redirigir si no hay datos
+            // alert('Por favor, inicia sesión para ver tu perfil.');
+            // window.location.href = 'cuentas.html'; 
+        }
+
+        // Funcionalidad para Cerrar Sesión (solo ejemplo, sin borrado de datos por ahora)
+        document.getElementById('cerrarSesionBtn').addEventListener('click', () => {
+            alert('Funcionalidad de Cerrar Sesión por implementar. Ahora solo te redirigirá a la página de inicio.');
+            // En una implementación real, aquí se usaría: localStorage.removeItem('fitgo_perfil_usuario');
+            window.location.href = 'index.html'; 
+        });
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

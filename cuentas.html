@@ -42,7 +42,7 @@
 
 <div class="login-box">
   <h1>Iniciar Sesión</h1>
-    <form method="POST">
+    <form id="loginForm" method="POST"> 
       <div class="username">
         <input type="text" name="username" placeholder="Usuario" required>
       </div>
@@ -50,7 +50,7 @@
         <input type="password" name="contraseña" placeholder="Contraseña" required>
       </div>
       <div class="Peso">
-        <input type="number" name="peso" placeholder="Peso (kg)" required>
+        <input type="number" name="peso" id="peso" placeholder="Peso (kg)" required> 
       </div>
       <div class="Altura">
         <input type="number" name="altura" placeholder="Altura (cm)" required>
@@ -61,6 +61,8 @@
       <button type="submit">iniciar</button>
     </form>
 </div>
+
+<script src="main.js" defer></script> 
 
 
 </body>

@@ -1302,3 +1302,19 @@ textarea:focus {
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
+
+
+.pfp {
+  width: 180px;
+  height: 160px;
+  background: #e3e3e3;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pfp img {
+  width: 70px;
+  opacity: 0.8;
+}

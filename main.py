@@ -311,3 +311,223 @@ if __name__ == "__main__":
         menu()
     else:
         print("\nNo se pudo iniciar la aplicación debido a un error de conexión o configuración con MySQL.")
+
+       
+#Machi
+
+import mysql.connector
+
+
+DB_NAME = "FitgoHomeDB"
+
+def conectar(db_name=DB_NAME):
+    """
+    Establece la conexión a la base de datos.
+    Si db_name es None, se conecta sin seleccionar una DB.
+    """
+    try:
+        config = {
+            'host': "127.0.0.1",
+            'user': "root",
+            'password': "1234", # ¡RECUERDA cambiar tu contraseña real aquí!
+        }
+        if db_name:
+            config['database'] = db_name
+            
+        mydb = mysql.connector.connect(**config)
+        return mydb
+    except mysql.connector.Error as err:
+        if db_name and err.errno != 1049:
+             print(f"❌ Error al conectar a la base de datos: {err}")
+        return None
+
+
+
+def configuracion_inicial_home():
+    """
+    Asegura que la DB y las tres tablas del Home (Estadísticas, Programas, Testimonios) existan.
+    """
+    
+    temp_db = conectar(db_name=None)
+    if temp_db:
+        try:
+            temp_cursor = temp_db.cursor()
+            temp_cursor.execute(f"CREATE DATABASE IF NOT EXISTS {DB_NAME}")
+            temp_db.commit()
+            print(f" Base de datos '{DB_NAME}' verificada/creada.")
+            temp_cursor.close()
+            temp_db.close()
+        except mysql.connector.Error as err:
+            print(f" Error al crear la DB: {err}")
+            return False
+    else:
+        return False
+
+    mydb = conectar(DB_NAME)
+    if mydb is None:
+        print(" No se pudo conectar a la DB para crear las tablas.")
+        return False
+
+    mycursor = mydb.cursor()
+    
+    mycursor.execute("""
+    CREATE TABLE IF NOT EXISTS Estadisticas (
+        Clave VARCHAR(100) PRIMARY KEY,
+        Valor VARCHAR(255) NOT NULL,
+        Descripcion VARCHAR(255)
+    )
+    """)
+    
+    mycursor.execute("""
+    CREATE TABLE IF NOT EXISTS Programas (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        Nombre VARCHAR(100) NOT NULL UNIQUE,
+        Descripcion TEXT,
+        Duracion VARCHAR(50),
+        Nivel VARCHAR(50)
+    )
+    """)
+
+    mycursor.execute("""
+    CREATE TABLE IF NOT EXISTS Testimonios (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        Autor VARCHAR(100) NOT NULL,
+        Logro VARCHAR(100),
+        Comentario TEXT,
+        Calificacion INT 
+    )
+    """)
+    print("Tablas del Home (Estadisticas, Programas, Testimonios) verificadas/creadas.")
+
+
+    sql_stats = "INSERT IGNORE INTO Estadisticas (Clave, Valor, Descripcion) VALUES (%s, %s, %s)"
+    val_stats = [
+        ("UsuariosActivos", "Muchos", "Usuarios activos"),
+        ("RutinasDisponibles", "Varias", "Rutinas disponibles"),
+        ("Satisfaccion", "95%", "Satisfacción")
+    ]
+    mycursor.executemany(sql_stats, val_stats)
+
+    sql_programas = "INSERT IGNORE INTO Programas (Nombre, Descripcion, Duracion, Nivel) VALUES (%s, %s, %s, %s)"
+    val_programas = [
+        ("Perder peso", "Programas efectivos de cardio y nutrición para alcanzar tu peso ideal", "8-12 semanas", "Todos los niveles"),
+        ("Ganar músculo", "Rutinas de fuerza y hipertrofia para desarrollar masa muscular", "12-16 semanas", "Intermedio-Avanzado"),
+        ("Vida saludable", "Equilibrio perfecto entre ejercicio, nutrición y bienestar mental", "Continuo", "Todos los niveles"),
+    ]
+    mycursor.executemany(sql_programas, val_programas)
+    
+    sql_testimonios = "INSERT IGNORE INTO Testimonios (Autor, Logro, Comentario, Calificacion) VALUES (%s, %s, %s, %s)"
+    val_testimonios = [
+        ("María González", "Perdió 15kg en 4 meses", "FitGo cambió mi vida completamente...", 5),
+        ("Carlos Ruiz", "Ganó 8kg de músculo", "Las rutinas son increíbles...", 5),
+        ("Ana Martínez", "Mejoró su salud integral", "No solo mejoré físicamente, también mentalmente...", 5)
+    ]
+    mycursor.executemany(sql_testimonios, val_testimonios)
+
+
+    mydb.commit()
+    print(" Datos de prueba (Estadísticas, Programas y Testimonios) verificados/insertados.")
+
+    mycursor.close()
+    mydb.close()
+    return True
+
+
+def obtener_datos(tabla):
+    """Función genérica para obtener todos los registros de una tabla del Home."""
+    conexion = conectar()
+    if conexion is None:
+        return []
+
+    cursor = conexion.cursor(dictionary=True) 
+    
+    try:
+        cursor.execute(f"SELECT * FROM {tabla}")
+        datos = cursor.fetchall() 
+        return datos
+    except mysql.connector.Error as err:
+        print(f" Error al obtener datos de {tabla}: {err}")
+        return []
+    finally:
+        cursor.close()
+        conexion.close()
+
+def actualizar_metrica():
+    """Permite modificar el valor de una estadística del Hero Section."""
+    print("\n--- ✏️ Actualizar Estadística del Home ---")
+    
+    metricas = obtener_datos("Estadisticas")
+    if not metricas:
+        print(" No hay métricas para mostrar/actualizar.")
+        return
+        
+    print("\nMétricas Disponibles:")
+    for i, m in enumerate(metricas):
+        print(f"{i + 1}. {m['Descripcion']} (Clave: {m['Clave']}, Valor Actual: {m['Valor']})")
+        
+    clave_elegida = input("Ingrese la Clave (ej. UsuariosActivos) de la métrica a modificar: ")
+    nuevo_valor = input("Ingrese el Nuevo Valor: ")
+
+    conexion = conectar()
+    if conexion is None:
+        return
+
+    cursor = conexion.cursor()
+    query = "UPDATE Estadisticas SET Valor = %s WHERE Clave = %s"
+    
+    try:
+        cursor.execute(query, (nuevo_valor, clave_elegida))
+        conexion.commit()
+        if cursor.rowcount > 0:
+            print(f"\n Métrica '{clave_elegida}' actualizada a '{nuevo_valor}'.")
+        else:
+            print(f"\n⚠️ No se encontró la métrica con Clave '{clave_elegida}'.")
+    except mysql.connector.Error as err:
+        print(f" Error al actualizar métrica: {err}")
+    finally:
+        cursor.close()
+        conexion.close()
+
+def menu_home():
+    """Muestra el menú de gestión del contenido del Home."""
+    while True:
+        print("\n--- GESTIÓN DE CONTENIDO DEL HOME (FITGO) ---")
+        print("1. Mostrar Estadísticas (Métricas)")
+        print("2. Mostrar Programas")
+        print("3. Mostrar Testimonios")
+        print("4. Actualizar una Métrica (Ej. Usuarios activos)")
+        print("5. Salir")
+        print("------------------------------------------")
+
+        opcion = input("Seleccione una opción: ")
+
+        if opcion == "1":
+            print("\n## ESTADÍSTICAS DEL HOME (Hero Section) ##")
+            stats = obtener_datos("Estadisticas")
+            for s in stats:
+                print(f" - {s['Descripcion']}: {s['Valor']}")
+        elif opcion == "2":
+            print("\n## PROGRAMAS DISPONIBLES ##")
+            programas = obtener_datos("Programas")
+            for p in programas:
+                print(f" - {p['Nombre']} ({p['Nivel']}): {p['Descripcion'][:30]}...")
+        elif opcion == "3":
+            print("\n## HISTORIAS DE ÉXITO (Testimonios) ##")
+            testimonios = obtener_datos("Testimonios")
+            for t in testimonios:
+                print(f" - {t['Autor']} ({t['Logro']}). Calificación: {t['Calificacion']} estrellas.")
+        elif opcion == "4":
+            actualizar_metrica()
+        elif opcion == "5":
+            print(" Saliendo de la gestión del Home.")
+            break
+        else:
+            print(" Opción inválida. Pruebe otra vez.\n")
+
+if __name__ == "__main__":
+    print("Iniciando configuración de base de datos para el Home...")
+    if configuracion_inicial_home():
+        print("\nConfiguración lista. Iniciando menú de gestión.")
+        menu_home()
+    else:
+        print("\n No se pudo iniciar la aplicación debido a un error de conexión o configuración con MySQL.")
